@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gambling Game</title>
+
+    <script language="JavaScript">
+
+    // Function to run the game
+    function RUN()
+    {
+        // Check whether a choice is selected
+        if (!document.getElementById("over").checked &&
+            !document.getElementById("below").checked)
+        {
+            alert("Please select Over 35 or Below 35!");
+            return;
+        }
+
+        // Generate random number between 0 and 70
+        var num1 = Math.round(Math.random() * 70);
+
+        // Display random number
+        document.getElementById("textBox1").value = num1;
+
+        // Check for tie
+        if (num1 == 35)
+        {
+            alert("It was a tie: please try again");
+        }
+
+        // Check Over 35
+        else if (document.getElementById("over").checked)
+        {
+            if (num1 > 35)
+            {
+                alert("WIN: very good bet.");
+            }
+            else
+            {
+                alert("Lose: sorry,wrong bet.");
+            }
+        }
+
+        // Check Below 35
+        else if (document.getElementById("below").checked)
+        {
+            if (num1 < 35)
+            {
+                alert("WIN: very good bet.");
+            }
+            else
+            {
+                alert("Lose: sorry,wrong bet.");
+            }
+        }
+    }
+
+
+    // Function to reset the game
+    function RESET()
+    {
+        document.getElementById("over").checked = false;
+
+        document.getElementById("below").checked = false;
+
+        document.getElementById("textBox1").value = "";
+    }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h2>Gambling Game</h2>
+
+    <input type="radio" name="choice" id="below">
+    Below 35
+
+    <br><br>
+
+    <input type="radio" name="choice" id="over">
+    Over 35
+
+    <br><br>
+
+    <button onclick="RESET()">RESET</button>
+
+    <button onclick="RUN()">RUN</button>
+
+    <br><br>
+
+    <h3>Simple Guessing Game</h3>
+
+    <input type="text" id="textBox1" readonly>
+
+</body>
+
+</html>
